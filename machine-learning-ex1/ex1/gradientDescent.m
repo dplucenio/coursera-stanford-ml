@@ -17,11 +17,10 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-
-
-
-
-
+    % TODO: Add document deriving gradient descent for documentation
+    h = X*theta;
+    e = y - h;
+    theta = theta + alpha/m * sum(e.*X)';
 
     % ============================================================
 
