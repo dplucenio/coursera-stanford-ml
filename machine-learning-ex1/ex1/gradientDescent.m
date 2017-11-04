@@ -19,8 +19,7 @@ for iter = 1:num_iters
 
     % TODO: Add document deriving gradient descent for documentation
     h = X*theta;
-    e = y - h;
-    theta = theta + alpha/m * sum(e.*X)';
+    theta = theta + alpha/m * X'*(y-h);
 
     % ============================================================
 
