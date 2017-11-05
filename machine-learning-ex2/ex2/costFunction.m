@@ -20,13 +20,12 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
-
-
-
-
-
-
-
+% TODO: show the derivation of the simplified version
+% presented here
+z = X*theta;
+J = 1/m .* sum((log(1+exp(z)) .- y.*z));
+h = sigmoid(z);
+grad = 1/m*X'*(h-y);
 % =============================================================
 
 end
