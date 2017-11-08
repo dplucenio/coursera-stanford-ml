@@ -37,7 +37,7 @@ grad = zeros(size(theta));
 %
 n = length(theta); % number of features
 z = X*theta;
-wj = theta(2:n)
+wj = theta(2:n);
 J = 1/m .* sum((log(1+exp(z)) .- y.*z)) + lambda/(2*m) * wj'*wj;
 h = sigmoid(z);
 grad = 1/m*X'*(h-y);
