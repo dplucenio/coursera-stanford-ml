@@ -35,14 +35,13 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
-
-
-
-
-
-
-
-
+n = length(theta); % number of features
+z = X*theta;
+wj = theta(2:n)
+J = 1/m .* sum((log(1+exp(z)) .- y.*z)) + lambda/(2*m) * wj'*wj;
+h = sigmoid(z);
+grad = 1/m*X'*(h-y);
+grad(2:n) = grad(2:n)  + lambda/m * wj;
 
 
 % =============================================================
