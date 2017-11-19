@@ -71,7 +71,7 @@ J = 1/m .* sum(sum(-yy.*log(h) - (1-yy).*log(1-h)));
 %h=h(1,:);
 %a2=a2(:,1);
 %a1=a1(:,1);
-delta_3 = -(yy - h); % .* h.*(1.-h);
+delta_3 = -(yy - h)./m; % .* h.*(1.-h);
 % By apllying chain rule on error function, we get the following expression for
 % computing delta_3:
 % delta_3 = -(yy - h) .* h.*(1.-h);
@@ -80,17 +80,8 @@ delta_3 = -(yy - h); % .* h.*(1.-h);
 delta_3 = delta_3';
 delta_2 = Theta2'*delta_3 .* a2 .*(1.-a2);
 delta_2 = delta_2(2:end,:);
-W2_g = delta_3 * a2';
-
-W1_g = delta_2 * a1';
-%size(Theta2)
-%size(Theta2_grad)
-%size(W2_g)
-%size(Theta1)
-%size(Theta1_grad)
-%size(W1_g)
-Theta1_grad = W1_g/m;
-Theta2_grad = W2_g/m;
+Theta1_grad = delta_2 * a1';
+Theta2_grad = delta_3 * a2';
 
 % Part 3: Implement regularization with the cost function and gradients.
 %
@@ -99,25 +90,11 @@ Theta2_grad = W2_g/m;
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+reg_cost = sum((sum(Theta1(:,2:end).^2))) + sum((sum(Theta2(:,2:end).^2)));
+reg_cost = (reg_cost*lambda) / (2*m);
+J += reg_cost;
+Theta1_grad(:,2:end) += lambda/m .* Theta1(:,2:end);
+Theta2_grad(:,2:end) += lambda/m .* Theta2(:,2:end);
 % -------------------------------------------------------------
 
 % =========================================================================
