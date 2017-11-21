@@ -67,17 +67,7 @@ J = 1/m .* sum(sum(-yy.*log(h) - (1-yy).*log(1-h)));
 %               over the training examples if you are implementing it for the 
 %               first time.
 
-%yy=yy(1,:);
-%h=h(1,:);
-%a2=a2(:,1);
-%a1=a1(:,1);
-delta_3 = -(yy - h)./m; % .* h.*(1.-h);
-% By apllying chain rule on error function, we get the following expression for
-% computing delta_3:
-% delta_3 = -(yy - h) .* h.*(1.-h);
-% This is the same as found in books "Neural networks for applied Sciences and
-% Engineering - S. Samarasinghe" and "Machine Learning - Tom Mitchell"
-delta_3 = delta_3';
+delta_3 = (h'-yy')./m; % .* h.*(1.-h);
 delta_2 = Theta2'*delta_3 .* a2 .*(1.-a2);
 delta_2 = delta_2(2:end,:);
 Theta1_grad = delta_2 * a1';
