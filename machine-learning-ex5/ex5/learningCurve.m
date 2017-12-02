@@ -54,7 +54,7 @@ m_val = size(Xval,1);
 for i = 1:m
   xx = X(1:i, :);
   yy = y(1:i, :);
-  theta = trainLinearReg(xx, yy, lambda)
+  theta = trainLinearReg(xx, yy, lambda);
 
   hh = xx*theta;
   error_train(i) = 1/(2*i) * (yy-hh)'*(yy-hh);
