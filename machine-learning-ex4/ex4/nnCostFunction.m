@@ -67,7 +67,7 @@ J = 1/m .* sum(sum(-yy.*log(h) - (1-yy).*log(1-h)));
 %               over the training examples if you are implementing it for the 
 %               first time.
 
-delta_3 = (h'-yy')./m; % .* h.*(1.-h);
+delta_3 = (h'-yy')./m;
 delta_2 = Theta2'*delta_3 .* a2 .*(1.-a2);
 delta_2 = delta_2(2:end,:);
 Theta1_grad = delta_2 * a1';
