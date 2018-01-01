@@ -33,7 +33,10 @@ for k = 1:K
       num_k+=1;
     endif
   end
-  centroids(k,:) = sum_k./num_k;
+  if num_k > 0
+    centroids(k,:) = sum_k./num_k;
+   else
+    centroids(k,:) = zeros(1,n);
 end
 
 

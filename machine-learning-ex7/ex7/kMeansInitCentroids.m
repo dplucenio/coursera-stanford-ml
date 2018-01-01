@@ -6,13 +6,15 @@ function centroids = kMeansInitCentroids(X, K)
 %
 
 % You should return this values correctly
-centroids = zeros(K, size(X, 2));
+[m n] = size(X);
+centroids = zeros(K, n);
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: You should set centroids to randomly chosen examples from
 %               the dataset X
 %
-
+idx = unidrnd(m, K, 1);
+centroids = X(idx,:);
 
 
 
