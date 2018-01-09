@@ -20,16 +20,10 @@ sigma2 = zeros(n, 1);
 %               the data for the i-th feature and sigma2(i)
 %               should contain variance of the i-th feature.
 %
-
-
-
-
-
-
-
-
-
-
+mean(X);
+var(X);
+mu = (1/m)*sum(X(:,:))';
+sigma2 = diag((1/m)*(X - mu')'*(X-mu'));
 % =============================================================
 
 
