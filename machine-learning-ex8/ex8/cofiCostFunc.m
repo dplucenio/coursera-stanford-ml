@@ -43,6 +43,13 @@ H = (X*Theta').*R;
 
 J = 0.5 *sum(sum((H-Y).^2));
 Theta_grad = (X'*(H-Y))';
+for j=1:num_users
+  h = H(:,j);
+  y = Y(:,j);
+  w=Theta'(:,j);
+  X_grad += (h-y).*w';
+end
+
 % =============================================================
 
 grad = [X_grad(:); Theta_grad(:)];
